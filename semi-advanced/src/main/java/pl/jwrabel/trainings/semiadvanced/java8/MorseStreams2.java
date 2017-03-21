@@ -1,4 +1,4 @@
-package pl.jwrabel.javandwro2.cars.java8;
+package pl.jwrabel.trainings.semiadvanced.java8;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;

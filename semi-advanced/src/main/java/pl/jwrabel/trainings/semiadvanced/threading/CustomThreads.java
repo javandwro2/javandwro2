@@ -1,4 +1,4 @@
-package pl.jwrabel.javandwro2.cars.threading;
+package pl.jwrabel.trainings.semiadvanced.threading;
 
 import java.util.Random;
 
