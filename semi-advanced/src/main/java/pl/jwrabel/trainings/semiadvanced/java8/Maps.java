@@ -1,5 +1,8 @@
 package pl.jwrabel.trainings.semiadvanced.java8;
 
+import pl.jwrabel.trainings.semiadvanced.java8.model.Person;
+import pl.jwrabel.trainings.semiadvanced.java8.model.Point;
+
 import java.util.*;
 
 /**

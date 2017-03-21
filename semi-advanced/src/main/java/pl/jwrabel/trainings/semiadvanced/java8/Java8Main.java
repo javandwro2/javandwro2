@@ -1,5 +1,9 @@
 package pl.jwrabel.trainings.semiadvanced.java8;
 
+import pl.jwrabel.trainings.semiadvanced.java8.model.AddOperation;
+import pl.jwrabel.trainings.semiadvanced.java8.model.Operation;
+import pl.jwrabel.trainings.semiadvanced.java8.model.SubstractOperation;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

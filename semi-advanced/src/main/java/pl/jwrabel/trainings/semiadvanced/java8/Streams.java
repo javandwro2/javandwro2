@@ -1,5 +1,7 @@
 package pl.jwrabel.trainings.semiadvanced.java8;
 
+import pl.jwrabel.trainings.semiadvanced.java8.model.Person;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
@@ -170,11 +172,28 @@ public class Streams {
 		int max = intSummaryStatistics.getMax();
 
 
+		// SPŁASZCZANIE - FLAT MAP
+		List<List<String>> lists = new ArrayList<>();
+		ArrayList<String> strings = new ArrayList<>();
+		strings.add("A");
+		strings.add("B");
+		lists.add(strings);
+		ArrayList<String> strings2 = new ArrayList<>();
+		strings2.add("C");
+		strings2.add("D");
+		lists.add(strings2);
+
+		List<String> collect2 = lists.stream().flatMap(l -> l.stream()).collect(Collectors.toList());
+
+		// FIND FIRST
+		Optional<Person> first = personList.stream()
+				.filter(p -> p.getFirstName().equals("Adam") && p.getLastName().equals("Kowalski"))
+				.findFirst();
 
 
-		int reduce = IntStream.range(0, 100).reduce(0, (sumR, x) -> sumR += x);
-//		list.stream().flatMap()
+		Person firstPerson = personList.stream()
+				.filter(p -> p.getFirstName().equals("Adam") && p.getLastName().equals("Kowalski"))
+				.findFirst().get();
 
-		// findFirst
 	}
 }

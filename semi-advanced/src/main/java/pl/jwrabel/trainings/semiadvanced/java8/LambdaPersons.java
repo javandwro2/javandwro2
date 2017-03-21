@@ -1,9 +1,8 @@
 package pl.jwrabel.trainings.semiadvanced.java8;
 
-import java.util.ArrayList;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
+import pl.jwrabel.trainings.semiadvanced.java8.model.Person;
+
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -105,7 +104,13 @@ public class LambdaPersons {
 		// 7. wypisać osoby
 		// WROCŁAW -> 2 osoby
 		// WARSZAWA -> 1 osoba
-
+		Set<Map.Entry<String, List<Person>>> entries = citiesPersonsMap.entrySet();
+//		personList.stream().forEach();
+//		personList.forEach();
+		citiesPersonsMap.entrySet().stream().forEach(entry -> {
+			System.out.println(entry.getKey().toUpperCase());
+			System.out.println(" - " + entry.getValue().size());
+		});
 
 		// 8.
 		// ADAM -> 2 miasta

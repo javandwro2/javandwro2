@@ -1,4 +1,4 @@
-package pl.jwrabel.trainings.semiadvanced.java8;
+package pl.jwrabel.trainings.semiadvanced.java8.model;
 
 /**
  * Created by jakubwrabel on 21.03.2017.
