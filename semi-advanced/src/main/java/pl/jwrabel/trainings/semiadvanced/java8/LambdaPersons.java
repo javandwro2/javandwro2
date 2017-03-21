@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,6 +23,12 @@ public class LambdaPersons {
 
 		// WYPISANIE TYLKO OSÓB Z WARSZAWY
 		personList.stream().filter(p -> p.getCity().equals("Warszawa")).forEach(x -> System.out.println(x));
+		personList.stream().filter(new Predicate<Person>() {
+			@Override
+			public boolean test(Person person) {
+				return person.getCity().equals("Warszawa")
+			}
+		}).forEach(x -> System.out.println(x));
 
 
 		personList.stream()

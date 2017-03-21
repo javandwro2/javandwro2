@@ -54,7 +54,6 @@ public class Maps {
 
 		personsMap.put("a", people);
 
-
 		Set<Map.Entry<String, List<Person>>> entries1 = personsMap.entrySet();
 		for (Map.Entry<String, List<Person>> entry : entries1) {
 			String key = entry.getKey();
@@ -62,5 +61,15 @@ public class Maps {
 			List<Person> value = entry.getValue();
 			System.out.println("Value: " + value);
 		}
+
+		// wyciąganie kluczy z mapy
+		Set<String> strings = personsMap.keySet();
+
+		// wyciąganie wartości
+		Collection<List<Person>> values = personsMap.values();
+		for (List<Person> value : values) {
+
+		}
+
 	}
 }
