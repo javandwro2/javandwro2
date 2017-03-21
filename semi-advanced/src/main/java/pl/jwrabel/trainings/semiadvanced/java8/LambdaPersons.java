@@ -91,25 +91,26 @@ public class LambdaPersons {
 
 		citiesPersonsMap.entrySet().forEach(entry -> {
 			System.out.println(entry.getKey().toUpperCase());
-			entry.getValue().forEach(p -> System.out.println("\t" + p));
+			entry.getValue().forEach(p -> System.out.println("\t" + p.getFirstName() + " " + p.getLastName()));
 		});
 		// LUB
 		for (Map.Entry<String, List<Person>> citiesPersonsMapEntry : citiesPersonsMap.entrySet()) {
 			System.out.println(citiesPersonsMapEntry.getKey().toUpperCase());
 			List<Person> persons = citiesPersonsMapEntry.getValue();
 			for (Person person : persons) {
-				System.out.println("\t" + person);
+				System.out.println("\t" + person.getFirstName() + " " + person.getLastName());
 			}
 		}
 
 		// 7. wypisać osoby
 		// WROCŁAW -> 2 osoby
 		// WARSZAWA -> 1 osoba
-		//
+
 
 		// 8.
 		// ADAM -> 2 miasta
 		// PIOTR -> 1 miast
+
 
 	}
 
