@@ -26,7 +26,7 @@ public class LambdaPersons {
 		personList.stream().filter(new Predicate<Person>() {
 			@Override
 			public boolean test(Person person) {
-				return person.getCity().equals("Warszawa")
+				return person.getCity().equals("Warszawa");
 			}
 		}).forEach(x -> System.out.println(x));
 
@@ -87,8 +87,29 @@ public class LambdaPersons {
 		// WROCŁAW
 		//  Piotr Kowalski
 		// 	Adam Kowalski
-		Map<String, List<Person>> collect = personList.stream().collect(Collectors.groupingBy(p -> p.getFirstName()));
-//		collect.entrySet().stream()
+		Map<String, List<Person>> citiesPersonsMap = personList.stream().collect(Collectors.groupingBy(p -> p.getCity()));
+
+		citiesPersonsMap.entrySet().forEach(entry -> {
+			System.out.println(entry.getKey().toUpperCase());
+			entry.getValue().forEach(p -> System.out.println("\t" + p));
+		});
+		// LUB
+		for (Map.Entry<String, List<Person>> citiesPersonsMapEntry : citiesPersonsMap.entrySet()) {
+			System.out.println(citiesPersonsMapEntry.getKey().toUpperCase());
+			List<Person> persons = citiesPersonsMapEntry.getValue();
+			for (Person person : persons) {
+				System.out.println("\t" + person);
+			}
+		}
+
+		// 7. wypisać osoby
+		// WROCŁAW -> 2 osoby
+		// WARSZAWA -> 1 osoba
+		//
+
+		// 8.
+		// ADAM -> 2 miasta
+		// PIOTR -> 1 miast
 
 	}
 
