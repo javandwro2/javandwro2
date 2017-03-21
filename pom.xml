@@ -12,6 +12,7 @@
         <module>gui-swing</module>
         <module>sorting-algorithms</module>
         <module>io</module>
+        <module>semi-advanced</module>
     </modules>
 
     <dependencies>
