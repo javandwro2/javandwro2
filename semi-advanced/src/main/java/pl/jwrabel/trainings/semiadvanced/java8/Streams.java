@@ -194,6 +194,5 @@ public class Streams {
 		Person firstPerson = personList.stream()
 				.filter(p -> p.getFirstName().equals("Adam") && p.getLastName().equals("Kowalski"))
 				.findFirst().get();
-
 	}
 }

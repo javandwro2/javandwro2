@@ -12,12 +12,17 @@ public class Optionals {
 		// TWORZENIE OPTIONAL
 		// 1. Optional.empty()
 		Optional<Object> emptyOptional = Optional.empty();
+
 		// 2. Optional.of(...)
 		String a = "A";
 		Optional<String> optional2 = Optional.of(a);
-		java.awt.Point point = new java.awt.Point();
 		java.awt.Point pointNull = null;
-//        Optional<Point> point1 = Optional.of(pointNull); // wywali, bo pointNull === null
+//        Optional<Point> point1 = Optional.of(null); // wywali, bo pointNull === null
+
+
+
+
+
 		// 3. Optional.ofNullable(...)
 		Optional<String> optional3 = Optional.ofNullable("ab");
 		Optional<java.awt.Point> optional31 = Optional.ofNullable(pointNull);
@@ -28,44 +33,30 @@ public class Optionals {
 		String ab = new String();
 
 		Optional<String> testOptional = Optional.ofNullable(" ");
+
 		// METODY OPTIONALI
 		// 1. isPresent
-		boolean isNotNull = testOptional.isPresent();
 
-		java.awt.Point nullPoint = null;
-		java.awt.Point nonNullPoint = new java.awt.Point();
 
-		Optional<java.awt.Point> nonNullOptional = Optional.of(nonNullPoint);
-		Optional<java.awt.Point> nullOptional = Optional.ofNullable(nullPoint);
 
-		boolean present = nullOptional.isPresent(); // present == false
-		boolean present1 = nonNullOptional.isPresent(); // present == true
+		String s = "abc";
+		Optional<String> stringOptional = Optional.of(s);
+
+		stringOptional.isPresent(); // true
+
+		String sNull = null;
+		Optional<String> nullStringOpt = Optional.ofNullable(nullString);
+		nullStringOpt.isPresent(); // false
 
 		// 2. get
-
-
-		if (point != null) {
-			point.getX();
-		}
-
-		if (nonNullOptional.isPresent()) {
-			java.awt.Point point1 = nonNullOptional.get();
-			point1.getX();
-		}
-
-		if (testOptional.isPresent()) {
-			String value = testOptional.get();
-			value.charAt(1);
-		}
-
+		String s1 = stringOptional.get(); // wywali się dla null
 
 		// 3. orElse
-		String s11 = null;
-		String value2 = Optional.ofNullable(s11).orElse(new String());
+		String myString = "ABC"; // może być null
+		Optional<String> myStringOptional = Optional.ofNullable(myString);
 
-		java.awt.Point point1 = new java.awt.Point(100, 200);
-		Optional<java.awt.Point> pointOptional = Optional.ofNullable(point1);
-		java.awt.Point valueOfPoint = pointOptional.orElse(new Point());
+		String orElse = myStringOptional.orElse("DEFAULT");
+
 
 		// 4. orElseGet
 		String value3 = testOptional.orElseGet(() -> System.lineSeparator());
@@ -76,6 +67,7 @@ public class Optionals {
 
 		// 6. filter
 		String value5 = testOptional.filter(x -> !x.isEmpty()).orElse("BLA");
+
 
 		String firstName = "Axxxxxx";
 		Optional<String> firstName1 = Optional.ofNullable(firstName);
@@ -90,15 +82,15 @@ public class Optionals {
 //        return "Default";
 
 		// 7. map
-		Optional<Double> bytes = pointOptional.map(x -> x.getX());
+//		Optional<Double> bytes = pointOptional.map(x -> x.getX());
 
-
-		// 8. ifPresent(Consumer)
-		testOptional.ifPresent(x -> System.out.println(x));
-
-
-		// 9. flatMap (map na metodzie zwracającej nulla)
-//        Optional<U> b = Optional.ofNullable(Optional.of("B")).flatMap(x -> x.get());
+//
+//		// 8. ifPresent(Consumer)
+//		testOptional.ifPresent(x -> System.out.println(x));
+//
+//
+//		// 9. flatMap (map na metodzie zwracającej nulla)
+////        Optional<U> b = Optional.ofNullable(Optional.of("B")).flatMap(x -> x.get());
 
 
 	}
