@@ -5,3 +5,10 @@
 obiekt klasy Customer("Adam", "kowalski", "123")
 
 
+mapa a -> b
+     c -> d
+
+     {
+        "a":"b",
+        "c":"d"
+     }
