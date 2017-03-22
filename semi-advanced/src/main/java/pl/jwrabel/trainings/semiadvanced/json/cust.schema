@@ -1,0 +1,7 @@
+{ } -> OBIEKT
+"abc":"xyz" -> pole o nazwie abc i wartości xyz
+[] -> KOLEKCJA
+
+obiekt klasy Customer("Adam", "kowalski", "123")
+
+

@@ -1,0 +1,19 @@
+{
+  "firstName": [
+    "Adam",
+    "Piotr"
+  ],
+  "lastName": "Kowalski",
+  "abc": "xyz",
+  "id": 123,
+  "childs": [
+    {
+      "firstName": [
+        "Adam",
+        "Piotr"
+      ],
+      "lastName": "Kowalski"
+    },
+    {}
+  ]
+}
