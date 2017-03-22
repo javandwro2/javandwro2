@@ -10,7 +10,7 @@ public class OptionalTest {
 	public static void main(String[] args) {
 		System.out.println(userName().orElse("Undefined"));
 
-		splitToLetters(Optional.ofNullable(null));
+//		splitToLetters(Optional.ofNullable("s"));
 
 
 		// metodę do liczenia miejsca zerowego funkcji kwadratowej
@@ -20,7 +20,7 @@ public class OptionalTest {
 	}
 
 	public static Optional<List<Double>> findZeroValues(Optional<Double> a,Optional<Double> b,Optional<Double> c){
-
+		return null;
 	}
 
 	public static Optional<String> userName() {
@@ -28,8 +28,13 @@ public class OptionalTest {
 		return Optional.ofNullable(null);
 	}
 
-	public static String[] splitToLetters(Optional<String> text){
+	public static String[] splitToLetters(String text){
+		if(text == null){
+			text = "";
+		}
+
 //		return text.orElse("").split("");
-		return text.orElseThrow(() -> new IllegalArgumentException("MUSISZ PODAC TEKST")).split("");
+//		return text.orElseThrow(() -> new IllegalArgumentException("MUSISZ PODAC TEKST")).split("");
+		return new String[10];
 	}
 }
