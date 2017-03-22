@@ -41,7 +41,23 @@ public class Jackson {
 		// ZAMIANA JSONA Z PLIKU NA OBIEKT
 		Place placeReaded = objectMapper.readValue(new File("cust.json"), Place.class);
 
+		// 1. Stworzyć klasę odwzorowującą poniższego JSONA
+//		Customer/Person
 		String jsonString = "{\"firstName\":\"Adam\",\"lastName\":\"Kowalski\",\"birthYear\":1980,\"idNumber\":\"ABC\"}";
 
+
+		String jsonString2 = "{\n" +
+				"\"coord\": {\n" +
+				"\"lon\": 139,\n" +
+				"\"lat\": 35\n" +
+				"},\n" +
+				"\"weather\": [\n" +
+				"{\n" +
+				"\"id\": 800,\n" +
+				"\"main\": \"Clear\",\n" +
+				"\"description\": \"clear sky\",\n" +
+				"\"icon\": \"01n\"\n" +
+				"}\n" +
+				"]}";
 	}
 }
