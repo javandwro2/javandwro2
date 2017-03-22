@@ -39,7 +39,7 @@ public class Jackson {
 		Place placeReader = objectMapper.readValue(placeAsJson, Place.class);
 
 		// ZAMIANA JSONA Z PLIKU NA OBIEKT
-		Place placeReaded = objectMapper.readValue(new File("cust.json"), Place.class);
+//		Place placeReaded = objectMapper.readValue(new File("cust.json"), Place.class);
 
 		// 1. Stworzyć klasę odwzorowującą poniższego JSONA
 //		Customer/Person
@@ -59,5 +59,6 @@ public class Jackson {
 				"\"icon\": \"01n\"\n" +
 				"}\n" +
 				"]}";
+		System.out.println(jsonString2);
 	}
 }
