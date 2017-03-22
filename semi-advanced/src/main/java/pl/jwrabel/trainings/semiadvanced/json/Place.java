@@ -13,6 +13,10 @@ public class Place {
 
 	List<Point> points;
 
+	public Place(){
+
+	}
+
 	public Place(String name, String city, List<Point> points) {
 		this.name = name;
 		this.city = city;

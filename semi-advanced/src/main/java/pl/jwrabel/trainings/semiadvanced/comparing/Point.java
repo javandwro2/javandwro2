@@ -15,6 +15,11 @@ public class Point implements Comparable {
 		this.y = y;
 	}
 
+	@SuppressWarnings("unused")
+	public Point(){
+
+	}
+
 	public Point(int x, int y) {
 
 		this.x = x;
