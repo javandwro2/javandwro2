@@ -5,9 +5,20 @@ package pl.jwrabel.trainings.semiadvanced.comparing;
  */
 public class Point implements Comparable {
 	private int x;
+	private int y;
 
-	public Point(int x) {
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public Point(int x, int y) {
+
 		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
@@ -22,6 +33,7 @@ public class Point implements Comparable {
 	public String toString() {
 		return "Point{" +
 				"x=" + x +
+				", y=" + y +
 				'}';
 	}
 
@@ -36,13 +48,27 @@ public class Point implements Comparable {
 	// X == Y ->  0
 	// X > Y ->  Coś > 0
 	public int compareTo(Object o) {
-		if(o.getClass() == getClass()){
-			Point point2 = (Point)o;
+		if (o.getClass() == getClass()) {
+			Point point2 = (Point) o;
 
-			if(x > point2.getX()){
+//			int value = Integer.compare(x, point2.x);
+//			if(value == 0){
+//				return Integer.compare(y, point2.y);
+//			}
+//			return value;
+
+			if (x == point2.getX()) {
+				if (y > point2.getY()) {
+					return 1;
+				} else if (y == point2.getY()) {
+					return 0;
+				} else {
+					return -1;
+				}
+			}
+
+			if (x > point2.getX()) {
 				return 1;
-			} else if (x == point2.getX()){
-				return 0;
 			} else {
 				return -1;
 			}

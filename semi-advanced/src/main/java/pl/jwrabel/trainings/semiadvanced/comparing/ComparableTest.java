@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class ComparableTest {
 	public static void main(String[] args) {
-		List<Integer> list = Arrays.asList(5,2,7,1);
+		List<Integer> list = Arrays.asList(5, 2, 7, 1);
 
 		System.out.println("Przed sortowaniem");
 		list.forEach(x -> System.out.println(x));
@@ -19,8 +19,7 @@ public class ComparableTest {
 		System.out.println("Po sortowaniu");
 		list.forEach(x -> System.out.println(x));
 
-
-		List<Point> points = Arrays.asList(new Point(6), new Point(1), new Point(4));
+		List<Point> points = Arrays.asList(new Point(6, 3), new Point(1, 5), new Point(4, 1), new Point(6, 1));
 		System.out.println("Lista punktów przed sortowaniem");
 		points.forEach(x -> System.out.println(x));
 
