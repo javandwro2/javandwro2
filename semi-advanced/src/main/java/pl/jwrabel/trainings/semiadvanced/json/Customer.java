@@ -1,5 +1,6 @@
 package pl.jwrabel.trainings.semiadvanced.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -8,5 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Customer {
 	String firstName;
 	String lastName;
+	@JsonIgnore
 	String id;
 }

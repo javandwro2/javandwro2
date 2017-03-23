@@ -1,5 +1,6 @@
 package pl.jwrabel.trainings.semiadvanced.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -16,7 +17,7 @@ public class Jackson2 {
 	public static void main(String[] args) throws IOException {
 		String jsonString = "{\n" +
 				"    \"base\": \"USD\",\n" +
-				"    \"date\": \"2017-01-23\",\n" +
+				"    \"date_a\": \"2017-01-23\",\n" +
 				"    \"rates\": {\n" +
 				"        \"AUD\": 1.3212,\n" +
 				"        \"BGN\": 1.8253,\n" +
@@ -50,5 +51,68 @@ public class Jackson2 {
 				"        \"ZAR\": 13.557,\n" +
 				"        \"EUR\": 0.93327\n" +
 				"    }\n" +
-				"}";	}
+				"}";
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		Currency currency = objectMapper.readValue(jsonString, Currency.class);
+		System.out.println(currency);
+
+		// ignorowanie nieznanych pól
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		String weatherJson = "{\n" +
+				"  \"coord\": {\n" +
+				"    \"lon\": 139,\n" +
+				"    \"lat\": 35\n" +
+				"  },\n" +
+				"  \"weather\": [\n" +
+				"    {\n" +
+				"      \"id\": 800,\n" +
+				"      \"main\": \"Clear\",\n" +
+				"      \"description\": \"clear sky\",\n" +
+				"      \"icon\": \"01n\"\n" +
+				"    }\n" +
+				"  ],\n" +
+				"  \"base\": \"stations\",\n" +
+				"  \"main\": {\n" +
+				"    \"temp\": 285.232,\n" +
+				"    \"pressure\": 1019.46,\n" +
+				"    \"humidity\": 100,\n" +
+				"    \"temp_min\": 285.232,\n" +
+				"    \"temp_max\": 285.232,\n" +
+				"    \"sea_level\": 1029.27,\n" +
+				"    \"grnd_level\": 1019.46\n" +
+				"  },\n" +
+				"  \"wind\": {\n" +
+				"    \"speed\": 4.11,\n" +
+				"    \"deg\": 101.501\n" +
+				"  },\n" +
+				"  \"clouds\": {\n" +
+				"    \"all\": 0\n" +
+				"  },\n" +
+				"  \"dt\": 1490199093,\n" +
+				"  \"sys\": {\n" +
+				"    \"message\": 0.0029,\n" +
+				"    \"country\": \"JP\",\n" +
+				"    \"sunrise\": 1490129062,\n" +
+				"    \"sunset\": 1490173055\n" +
+				"  },\n" +
+				"  \"id\": 1851632,\n" +
+				"  \"name\": \"Shuzenji\",\n" +
+				"  \"cod\": 200\n" +
+				"}";
+		objectMapper.readValue(weatherJson, Weather.class);
+
+
+		// mapowanie na pole o innej nazwie
+		// adnotacja nad polem @JsonProperty(value = "date_a")
+
+		// ustawienie objectMapperowi zachowania - ignoruj nieznane
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		// ignorowanie pola przy zamianie na JSON
+		// adnotacja nad polem
+//		@JsonIgnore
+	}
+
+
 }
