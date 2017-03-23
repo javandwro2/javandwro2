@@ -1,5 +1,7 @@
 package pl.jwrabel.trainings.semiadvanced.rest;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by jakubwrabel on 23.03.2017.
  */

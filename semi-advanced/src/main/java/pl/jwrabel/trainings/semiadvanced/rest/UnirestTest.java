@@ -45,7 +45,8 @@ public class UnirestTest {
 			}
 		});
 
-
+		Customer cust = Unirest.get("http://46.101.150.244:8080/customers/anna").asObject(Customer.class).getBody();
+		System.out.println(cust);
 
 
 	}
