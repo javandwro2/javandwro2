@@ -1,5 +1,7 @@
 package pl.jwrabel.trainings.semiadvanced.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by jakubwrabel on 22.03.2017.
  */
