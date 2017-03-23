@@ -109,6 +109,10 @@ public class Jackson2 {
 		// ustawienie objectMapperowi zachowania - ignoruj nieznane
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+		// ignorowanie nieznanych pól tylko dla jednej klasy
+		// adnotacja nad klasą
+//		@JsonIgnoreProperties(ignoreUnknown = true)
+
 		// ignorowanie pola przy zamianie na JSON
 		// adnotacja nad polem
 //		@JsonIgnore
