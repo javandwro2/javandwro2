@@ -1,8 +1,10 @@
 package pl.jwrabel.trainings.semiadvanced.json;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -12,7 +14,8 @@ public class Currency {
 	private String base;
 
 	@JsonProperty(value = "date_a")
-	private String date;
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private Date date;
 
 	private Map<String, Double> rates;
 
@@ -33,11 +36,11 @@ public class Currency {
 		this.base = base;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

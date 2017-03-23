@@ -100,8 +100,8 @@ public class Jackson2 {
 				"  \"name\": \"Shuzenji\",\n" +
 				"  \"cod\": 200\n" +
 				"}";
-		objectMapper.readValue(weatherJson, Weather.class);
-
+		Weather weather = objectMapper.readValue(weatherJson, Weather.class);
+		System.out.println(weather);
 
 		// mapowanie na pole o innej nazwie
 		// adnotacja nad polem @JsonProperty(value = "date_a")
@@ -116,7 +116,9 @@ public class Jackson2 {
 		// ignorowanie pola przy zamianie na JSON
 		// adnotacja nad polem
 //		@JsonIgnore
+
+		// format daty
+//		@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
+//		private Date date;
 	}
-
-
 }
