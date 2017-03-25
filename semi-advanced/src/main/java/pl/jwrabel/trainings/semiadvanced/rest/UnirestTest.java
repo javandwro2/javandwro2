@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.request.body.RequestBodyEntity;
 
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * Created by jakubwrabel on 23.03.2017.
@@ -14,13 +16,17 @@ public class UnirestTest {
 	public static void main(String[] args) throws UnirestException {
 		String body = Unirest.get("http://46.101.150.244:8080/hi").asString().getBody();
 		System.out.println(body);
-		String body2 = Unirest.get("http://46.101.150.244:8080/helloPathParam/Wojtek").asString().getBody();
+
+		// Path variable/Path param
+		String body2 = Unirest.get("http://46.101.150.244:8080/helloPathParam/Piotr").asString().getBody();
 		System.out.println(body2);
 
+		// Request param
 		String body3 = Unirest.get("http://46.101.150.244:8080/helloRequestParam?name=Andrzej").asString().getBody();
 		System.out.println(body3);
 
-		String customers = Unirest.get("http://46.101.150.244:8080/customers").asString().getBody();
+
+		String customers = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asString().getBody();
 		System.out.println(customers);
 
 		// WPIĘCIE JACKSONA W UNIRESTA
@@ -45,8 +51,26 @@ public class UnirestTest {
 			}
 		});
 
-		Customer cust = Unirest.get("http://46.101.150.244:8080/customers/anna").asObject(Customer.class).getBody();
+		Customer cust = Unirest.get("http://46.101.150.244:8080/api/v1/customers/d02b625f-29b8-4e9b-b980-f3967ec6db5c").asObject(Customer.class).getBody();
 		System.out.println(cust);
+
+		Customer[] customersArray = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asObject(Customer[].class).getBody();
+		System.out.println(customersArray);
+
+		Customer customer = new Customer();
+		customer.setBirthYear("1799");
+		customer.setHeight(1.89);
+		customer.setFirstName("Piotr");
+		customer.setLastName("Kowalski");
+		customer.setId(UUID.randomUUID().toString());
+
+		String response = Unirest
+				.post("http://46.101.150.244:8080/api/v1/customers")
+				.header("Content-Type", "application/json")
+				.body(customer).asString().getBody();
+
+		System.out.println(response);
+
 
 
 	}
