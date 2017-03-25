@@ -102,12 +102,14 @@ public class UnirestTest {
 				.post("http://46.101.150.244:8080/api/v1/customers")
 				.header("Content-Type", "application/json")
 				.body(customer).asString().getBody();
-
 		System.out.println(postResponse);
 
-		JsonNode weatherJson = Unirest.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=a1fb2306e8575f67c23fc8f23062f7e1").asJson().getBody();
-		double windSpeed = weatherJson.getObject().optJSONObject("wind").getDouble("speed");
 
+		// Wyciąganie elementów jsona z użyciem JsonNode -> chodzenie po JSONie bez konieczności mapowania na obiekty
+		// http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=a1fb2306e8575f67c23fc8f23062f7e1
+		JsonNode weatherJson = Unirest.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=a1fb2306e8575f67c23fc8f23062f7e1").asJson().getBody();
+
+		double windSpeed = weatherJson.getObject().optJSONObject("wind").getDouble("speed");
 		System.out.println(windSpeed);
 
 	}
