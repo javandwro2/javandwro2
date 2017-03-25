@@ -1,6 +1,7 @@
 package pl.jwrabel.trainings.semiadvanced.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -104,6 +105,10 @@ public class UnirestTest {
 
 		System.out.println(postResponse);
 
+		JsonNode weatherJson = Unirest.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=a1fb2306e8575f67c23fc8f23062f7e1").asJson().getBody();
+		double windSpeed = weatherJson.getObject().optJSONObject("wind").getDouble("speed")
+
+		System.out.println(windSpeed);
 
 	}
 }
