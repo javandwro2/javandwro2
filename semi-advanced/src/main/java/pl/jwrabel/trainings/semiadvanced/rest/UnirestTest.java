@@ -7,6 +7,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.body.RequestBodyEntity;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.UUID;
 
 /**
@@ -14,6 +15,24 @@ import java.util.UUID;
  */
 public class UnirestTest {
 	public static void main(String[] args) throws UnirestException {
+		// CRUD -> określenie funkcjonalności Create, Retrieve, Update, Delete
+
+		// 2 sposoby przekazywania parametrów
+		// 1. Path Variable/Path Param -> zmienna przekazywana jako część adresu,
+		// 		np. w /customer/123 123 to przekazywane id, reprezentuje się to często w sposób /customers/{id}
+		// 2. Request Param -> parametry przekazywane "po znaku zapytania", np. żeby przekazać
+		//		parametry name i surname wywołujemy /hi?name=Adam&surname=Kowalski,
+		//		kilka parametrów łączymy "&"
+
+		// główne typy zapytań w REST
+		// GET - służy do pobierania danych - odpowiednik Retrieve z CRUD, WAŻNE: NIE MA CIAŁA
+		// POST - służy do tworzenia obiektów (lub uruchamiania akcji), odpowiednik Create z CRUD
+		// PUT - służy do aktualizowania danych, odpowiednik Update z CRUD
+		// DELETE - służy do usuwania, odpowiednik Delete z CRUD
+
+
+
+
 		// Zapytanie - odpowiedź = String (Hello World from Jakub)
 		String simpleResponse = Unirest.get("http://46.101.150.244:8080/hi").asString().getBody();
 		System.out.println(simpleResponse);
@@ -64,8 +83,11 @@ public class UnirestTest {
 		// Pobranie wszystkich klientów i automatyczna zamiana
 		// odpowiedzi serwera (JSONa z kolekcją klientów) na tablicę obiektów klasy Customer
 		Customer[] customersArray = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asObject(Customer[].class).getBody();
-		System.out.println(customersArray);
-
+		for (Customer customer : customersArray) {
+			System.out.println(customer);
+		}
+		// lub
+//		Arrays.stream(customersArray).forEach(customer -> System.out.println(customer));
 
 		// Utworzenie i wysłanie POSTem nowego klienta do serwera (Tworzenie klienta)
 		Customer customer = new Customer();
