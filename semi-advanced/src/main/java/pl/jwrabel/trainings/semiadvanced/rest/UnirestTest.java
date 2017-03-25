@@ -14,22 +14,27 @@ import java.util.UUID;
  */
 public class UnirestTest {
 	public static void main(String[] args) throws UnirestException {
-		String body = Unirest.get("http://46.101.150.244:8080/hi").asString().getBody();
-		System.out.println(body);
+		// Zapytanie - odpowiedź = String (Hello World from Jakub)
+		String simpleResponse = Unirest.get("http://46.101.150.244:8080/hi").asString().getBody();
+		System.out.println(simpleResponse);
 
-		// Path variable/Path param
-		String body2 = Unirest.get("http://46.101.150.244:8080/helloPathParam/Piotr").asString().getBody();
-		System.out.println(body2);
+		// Zapytanie z użyciem Path variable/Path param -> zwraca Stringa (Hello World from Jakub + <PARAMETR>)
+		String responseFromPathVariableQuery = Unirest.get("http://46.101.150.244:8080/helloPathParam/Piotr").asString().getBody();
+		System.out.println(responseFromPathVariableQuery);
 
-		// Request param
-		String body3 = Unirest.get("http://46.101.150.244:8080/helloRequestParam?name=Andrzej").asString().getBody();
-		System.out.println(body3);
+		// Zapytanie z użyciem Request param -> zwraca Stringa (Hello World from Jakub + <PARAMETR_NAME>)
+		String responseFromRequestParamQuery = Unirest.get("http://46.101.150.244:8080/helloRequestParam?name=Andrzej").asString().getBody();
+		System.out.println(responseFromRequestParamQuery);
 
+		// Zapytanie z użyciem 2 Request param -> zwraca Stringa (Hello World from Jakub + <PARAMETR_NAME> + <PARAMETR_SURNAME>)
+		String responseFrom2RequestParamQuery = Unirest.get("http://46.101.150.244:8080/hello?name=Jakub&surname=Wrabel").asString().getBody();
+		System.out.println(responseFrom2RequestParamQuery);
 
-		String customers = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asString().getBody();
-		System.out.println(customers);
+		// Zapytanie zwracające wszystkich customerów jako JSONA (Stringa)
+		String customersJson = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asString().getBody();
+		System.out.println(customersJson);
 
-		// WPIĘCIE JACKSONA W UNIRESTA
+		// WPIĘCIE JACKSONA W UNIRESTA - umożliwia autmatyczną zamianę JSONów na obiekty w Unireście (i obiektów na JSONy)
 		Unirest.setObjectMapper(new ObjectMapper() {
 			private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
 					= new com.fasterxml.jackson.databind.ObjectMapper();
@@ -51,12 +56,18 @@ public class UnirestTest {
 			}
 		});
 
-		Customer cust = Unirest.get("http://46.101.150.244:8080/api/v1/customers/d02b625f-29b8-4e9b-b980-f3967ec6db5c").asObject(Customer.class).getBody();
-		System.out.println(cust);
+		// Pobranie jednego klienta (o ID string) i automatyczna zamiana
+		// odpowiedzi serwera (JSONa z klientem) na obiekt klasy Customer
+		Customer returnedCustomer = Unirest.get("http://46.101.150.244:8080/api/v1/customers/string").asObject(Customer.class).getBody();
+		System.out.println(returnedCustomer);
 
+		// Pobranie wszystkich klientów i automatyczna zamiana
+		// odpowiedzi serwera (JSONa z kolekcją klientów) na tablicę obiektów klasy Customer
 		Customer[] customersArray = Unirest.get("http://46.101.150.244:8080/api/v1/customers").asObject(Customer[].class).getBody();
 		System.out.println(customersArray);
 
+
+		// Utworzenie i wysłanie POSTem nowego klienta do serwera (Tworzenie klienta)
 		Customer customer = new Customer();
 		customer.setBirthYear("1799");
 		customer.setHeight(1.89);
@@ -64,13 +75,12 @@ public class UnirestTest {
 		customer.setLastName("Kowalski");
 		customer.setId(UUID.randomUUID().toString());
 
-		String response = Unirest
+		String postResponse = Unirest
 				.post("http://46.101.150.244:8080/api/v1/customers")
 				.header("Content-Type", "application/json")
 				.body(customer).asString().getBody();
 
-		System.out.println(response);
-
+		System.out.println(postResponse);
 
 
 	}
