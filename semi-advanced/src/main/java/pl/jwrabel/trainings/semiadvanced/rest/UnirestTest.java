@@ -112,5 +112,7 @@ public class UnirestTest {
 		double windSpeed = weatherJson.getObject().optJSONObject("wind").getDouble("speed");
 		System.out.println(windSpeed);
 
+		String description = weatherJson.getObject().optJSONArray("weather").optJSONObject(0).getString("description");
+		System.out.println(description);
 	}
 }
